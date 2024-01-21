@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="script.js"></script> -->
+    <title> Code and Chai </title>
+</head>
+<body>
+    <div class="language">
+        <li>Javascript</li>
+    </div>
+</body>
+<script>
+    function addLang(LangName)
+    {
+        const li = document.createElement('li');
+        li.innerHTML = `${LangName}`;
+        document.querySelector(".language").appendChild(li);
+
+    }
+
+    addLang("Python");
+    addLang("Java");
+
+// writing the optimized version for it
+    function OptimizedAddLang(Language)
+    {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(`${Language}`));
+        document.querySelector('.language').appendChild(li);
+    }
+
+    OptimizedAddLang('golang');
+
+    // Editing means replacing
+    const secondLang = document.querySelector("li:nth-child(2)");
+    const newLi = document.createElement('li');
+    newLi.textContent = "Ruby";
+    secondLang.replaceWith(newLi);
+
+    // Editing the first element;
+    const FirstLang = document.querySelector("li:first-child");
+    const newLi2 = document.createElement('li');
+    newLi2.innerText = "Haskell";
+    FirstLang.replaceWith(newLi2);
+
+    // how to delete the node
+    const LastLang = document.querySelector("li:last-child");
+    LastLang.remove();
+</script>
+</html>

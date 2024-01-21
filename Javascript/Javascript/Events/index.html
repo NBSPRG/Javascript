@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <ul id="ul">
+    <ul><img src="../img/img-1.jpg" id="img-1" class = "img1" height="500" width="500" alt=""></ul>
+    <ul><img src="../img/img-2.jpg" id="img-2" class = "img2" height="500" width="500" alt=""></ul>
+    <a href="https://www.google.com" id="google">Google</a>
+  </ul>
+
+</body>
+<script>
+  // document.getElementsById("img-1").onClick = function(){
+  //   alert("Img-1 Clicked......");
+  // }
+  // onClick doesn't give such numbers of properties attributes
+  // Thus we use addEventListner
+  document.getElementById("img-1").addEventListener("click", function(e){
+    e.stopPropagation()
+    console.log("Img-1 clicked....")
+    
+  }, false) // we have a third option that is by default false
+
+  // Event Propagation 
+  // i) Event Bubbling -> false - (Propagation of event from bottom to top)
+  // ii) Event Capturing -> true - (Propagation of the event from top to bottom)
+  // in order to prevent this propagation we use method stopPropagation
+  // likewise we use preventDefault() method to stop the default behaviour
+
+  document.getElementById("ul").addEventListener("click", function(e){
+    console.log("UL Clicked....")
+  }, false)
+
+  document.getElementById("google").addEventListener("click", function(e){
+    e.preventDefault();
+    // generally used in form when we don't have to submit the form instead of doing some operation at that moment
+    console.log("CLicked google");
+
+  }, false)
+
+  // onCLicking on Image, we want our image to get removed
+  document.getElementById("ul").addEventListener("click", function(e){
+    console.log(e.target, e.target.parentNode, e.target.tagName)
+    if(e.target.tagName === "IMG"){
+      const removeIt = e.target.parentNode;
+      removeIt.remove();
+    }
+  }, false)
+</script>
+</html>
